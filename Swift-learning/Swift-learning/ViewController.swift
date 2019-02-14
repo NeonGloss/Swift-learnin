@@ -8,108 +8,91 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
-    enum Level: Int{
-        case full
-        case middle
-        case low
-        case zero
+enum Level: Int{
+    case full
+    case middle
+    case low
+    case zero
+}
+enum ActionOverACar {
+    case invertEngine
+    case invertWindowsState
+    case loadingStorage(Int)
+    case addRemoveTrailer
+    case putRemoveChildCair
+}
+
+//1. Создать протокол «Car» и описать свойства, общие для автомобилей, а также метод действия.
+protocol Car : CustomStringConvertible{
+    var brand: String { get set }
+    var assembleYear: Int { get set }
+    var storageCapacity: Int { get  set }
+    var storageOccupation: Int { get  set }
+    var isItWounded: Bool { get  set }
+    var windowsAreOpened: Bool { get  set }
+    
+    func performSpecific(action: ActionOverACar) -> Bool
+}
+
+//2.Создать расширения для протокола «Car» и реализовать в них методы конкретных действий с автомобилем:
+//  открыть/закрыть окно, запустить/заглушить двигатель и т.д.
+//  (по одному методу на действие, реализовывать следует только те действия, реализация которых общая для всех автомобилей).
+extension Car {
+    func performBool (action: ActionOverACar) -> Bool {
+        switch action{
+        case .invertEngine:
+            return !isItWounded
+        case .invertWindowsState:
+            return !windowsAreOpened
+        default:
+            print("this action unallowable")
+        }
+        return true
     }
     
-//3. Взять из прошлого урока enum с действиями над автомобилем. Подумать, какие особенные действия имеет trunkCar, а какие – sportCar. Добавить эти действия в перечисление.
-    enum ActionOverACar {
-        case invertEngine
-        case invertWindowsState
-        case loadingStorage(Int)
-        case addRemoveTrailer       //new for Truck
-        case putRemoveChildCair     //new for PassangerCar
+    func performLoadUnload (action: ActionOverACar) -> Int{
+        switch action{
+        case .loadingStorage(let load):
+            if 0 <= (storageOccupation + load) && (storageOccupation + load) < storageCapacity {
+                return storageOccupation + load
+            } else if 0 < (storageOccupation + load){
+                return 0
+            } else {
+                return storageCapacity
+            }
+        default:
+            print("this action unallowable")
+        }
+        return 0
     }
+    
+}
+
+class ViewController: UIViewController {
   
-//1. Описать класс Car c общими свойствами автомобилей и пустым методом действия по аналогии с прошлым заданием.
-    class CommonVehicle {
+// 3. Создать два класса, имплементирующих протокол «Car» - trunkCar и sportСar. Описать в них свойства, отличающиеся для автомобиля и грузовика.
+// 4. Для каждого класса написать расширение, имплементирующее протокол CustomStringConvertible.
+    class PassengerCar: Car{
+        var description: String {
+            return String("-------------------\n" + "brand: \(self.brand)\n" + "assembleYear: \(self.assembleYear)\n" + "storageCapacity: \(self.storageCapacity)\n" + "storageOccupation: \(self.storageOccupation)\n" + "isItWounded: \(self.isItWounded)\n" + "windowsAreOpened: \(self.windowsAreOpened)\n" + "isChildChareExist: \(self.isChildChareExist)\n")
+        }
+        
+        func performSpecific(action: ActionOverACar) -> Bool{
+            switch action{
+            case .putRemoveChildCair:
+                return !self.isChildChareExist
+            default: return !self.isChildChareExist
+            }
+        }
+        
         var brand: String
         var assembleYear: Int
         var storageCapacity: Int
-        var storageOccupation = 0
-        var isItWounded = false
-        var windowsAreOpened = false
-        var tankFullness = Level.zero
-        
-        init(){
-            brand = "Toyota"
-            assembleYear = 1950
-            storageCapacity = 100
-        }
-        init(brand: String, assembleYear: Int, storageCapacity: Int, storageOccupation: Int, isItWounded:Bool, windowsAreOpened: Bool, tankFullness: Level){
-            self.brand = brand
-            self.assembleYear = assembleYear
-            self.storageCapacity = storageCapacity
-            self.isItWounded = isItWounded
-            self.windowsAreOpened = windowsAreOpened
-            self.tankFullness = tankFullness
-        }
-        
-        func perform(action: ActionOverACar){
-        }
-
-        func vehicleDescription()-> String {
-            return  "--------------------------------------------------------\n" + "brand: \(self.brand)\n" + "assembleYear: \(self.assembleYear)\n" + "storageCapacity: \(self.storageCapacity)\n" + "storageOccupation: \(self.storageOccupation)\n" + "isItWounded: \(self.isItWounded)\n" + "windowsAreOpened: \(self.windowsAreOpened)\n"
-        }
-        
-        
-    }
-    
-//2. Описать пару его наследников trunkCar и sportСar. Подумать, какими отличительными свойствами обладают эти автомобили. Описать в каждом наследнике специфичные для него свойства.
-//4. В каждом подклассе переопределить метод действия с автомобилем в соответствии с его классом.
-
-    class PassengerCar: CommonVehicle {
+        var storageOccupation: Int
+        var isItWounded: Bool
+        var windowsAreOpened: Bool
         var  isChildChareExist = false
-        
-        init(brand: String, assembleYear: Int,
-             storageCapacity: Int,
-             storageOccupation: Int,
-             isItWounded:Bool,
-             windowsAreOpened: Bool,
-             tankFullness: Level,
-             isChildChareExist: Bool){
-            super.init(brand: brand,
-                   assembleYear: assembleYear,
-                   storageCapacity: storageCapacity,
-                   storageOccupation: storageOccupation,
-                   isItWounded: isItWounded,
-                   windowsAreOpened: windowsAreOpened,
-                   tankFullness: tankFullness)
-            self.isChildChareExist = isChildChareExist
-            
-        }
-        
-        override func perform(action: ActionOverACar){
-            switch action{
-            case .invertEngine:
-                isItWounded = !isItWounded
-            case .invertWindowsState:
-                windowsAreOpened = !windowsAreOpened
-            case .loadingStorage(let load):
-                if 0 <= (storageOccupation + load) && (storageOccupation + load) < storageCapacity {
-                    storageOccupation = storageOccupation + load
-                } else if 0 < (storageOccupation + load){
-                    storageOccupation = 0
-                } else {
-                    storageOccupation = storageCapacity
-                }
-            case .putRemoveChildCair:
-                self.isChildChareExist = !self.isChildChareExist
-            default: break
-            }
-        }
-        override func vehicleDescription()-> String {
-            return  super.vehicleDescription() + "isChildChareExist: \(self.isChildChareExist)\n"
-        }
-    }
-    
-    class Lorry: CommonVehicle {
-        var isTrailerExist = false
         
         init(brand: String,
              assembleYear: Int,
@@ -117,88 +100,108 @@ class ViewController: UIViewController {
              storageOccupation: Int,
              isItWounded:Bool,
              windowsAreOpened: Bool,
-             tankFullness: Level,
-             isTrailerExist: Bool){
-            super.init(brand: brand,
-                       assembleYear: assembleYear,
-                       storageCapacity: storageCapacity,
-                       storageOccupation: storageOccupation,
-                       isItWounded: isItWounded,
-                       windowsAreOpened: windowsAreOpened,
-                       tankFullness: tankFullness)
-            self.isTrailerExist = isTrailerExist
+             isChildChareExist: Bool){
             
-        }
-        override func perform(action: ActionOverACar){
-            switch action{
-            case .invertEngine:
-                isItWounded = !isItWounded
-            case .invertWindowsState:
-                windowsAreOpened = !windowsAreOpened
-            case .loadingStorage(let load):
-                if 0 <= (storageOccupation + load) && (storageOccupation + load) < storageCapacity {
-                    storageOccupation = storageOccupation + load
-                } else if 0 < (storageOccupation + load){
-                    storageOccupation = 0
-                } else {
-                    storageOccupation = storageCapacity
-                }
-            case .addRemoveTrailer:
-                isTrailerExist = !isTrailerExist
-            default: break
-            }
+            self.brand = brand
+            self.assembleYear = assembleYear
+            self.storageCapacity = storageCapacity
+            self.isItWounded = isItWounded
+            self.storageOccupation = storageOccupation
+            self.windowsAreOpened = windowsAreOpened
+            self.isChildChareExist = isChildChareExist
             
-        }
-        override func vehicleDescription()-> String {
-            return  super.vehicleDescription() + "isTrailerExist: \(self.isTrailerExist)\n"
-        
         }
     }
     
+    class Lorry: Car {
+        var description: String {
+            return String("-------------------\n" + "brand: \(self.brand)\n" + "assembleYear: \(self.assembleYear)\n" + "storageCapacity: \(self.storageCapacity)\n" + "storageOccupation: \(self.storageOccupation)\n" + "isItWounded: \(self.isItWounded)\n" + "windowsAreOpened: \(self.windowsAreOpened)\n" + "isTrailerExist: \(self.isTrailerExist)\n")
+        }
+        
+        func performSpecific(action: ActionOverACar) -> Bool{
+            switch action{
+            case .addRemoveTrailer:
+                return !self.isTrailerExist
+            default: return self.isTrailerExist
+            }
+        }
+        
+
+        var brand: String
+        var assembleYear: Int
+        var storageCapacity: Int
+        var storageOccupation: Int
+        var isItWounded: Bool
+        var windowsAreOpened: Bool
+        var isTrailerExist = false
+        
+        func performAdoptTrailer(action: ActionOverACar) {
+            
+        }
+        
+        init(brand: String,
+             assembleYear: Int,
+             storageCapacity: Int,
+             storageOccupation: Int,
+             isItWounded:Bool,
+             windowsAreOpened: Bool,
+             isTrailerExist: Bool){
+            self.brand = brand
+            self.assembleYear = assembleYear
+            self.storageCapacity = storageCapacity
+            self.storageOccupation = storageOccupation
+            self.isItWounded = isItWounded
+            self.windowsAreOpened = windowsAreOpened
+            self.isTrailerExist = isTrailerExist
+        }
+    }
+    
+ 
+    
 // executable code ----------------------------------------------------------------------------
     
-    var vehicle: Any?
+    var vehicle: Car = Lorry(brand: "Noname", assembleYear: 1, storageCapacity: 1, storageOccupation: 1, isItWounded: true, windowsAreOpened: true, isTrailerExist: true)
+
     
     @IBAction func initACar(_ sender: UIButton) {
         
         if Int.random(in: 0...1) == 1 {
-            vehicle = Lorry(brand: "Toyota", assembleYear: Int.random(in: 1950...2018), storageCapacity: 1000, storageOccupation: Int.random(in: 0...1000), isItWounded: Bool.random(), windowsAreOpened: Bool.random(), tankFullness: Level.full, isTrailerExist: Bool.random())
+            vehicle = Lorry(brand: "Toyota", assembleYear: Int.random(in: 1950...2018), storageCapacity: 1000, storageOccupation: Int.random(in: 0...1000), isItWounded: Bool.random(), windowsAreOpened: Bool.random(), isTrailerExist: Bool.random())
             print("Теперь у нас есть грузовик")
-            print((vehicle as! Lorry).vehicleDescription())
+            print(vehicle as! Lorry)
         } else {
-            vehicle = PassengerCar(brand: "Nissan", assembleYear: Int.random(in: 1950...2018), storageCapacity: 100, storageOccupation: Int.random(in: 0...100), isItWounded: Bool.random(), windowsAreOpened: Bool.random(), tankFullness: Level.full, isChildChareExist: Bool.random())
+            vehicle = PassengerCar(brand: "Nissan", assembleYear: Int.random(in: 1950...2018), storageCapacity: 100, storageOccupation: Int.random(in: 0...100), isItWounded: Bool.random(), windowsAreOpened: Bool.random(), isChildChareExist: Bool.random())
             print("Теперь у нас есть легковой автомобиль")
-            print((vehicle as! PassengerCar).vehicleDescription())
+            print(vehicle as! PassengerCar)
         }
     }
-//5. Создать несколько объектов каждого класса. Применить к ним различные действия.
-//6. Вывести значения свойств экземпляров в консоль.
+
     
     @IBAction func performRandomActionWithVehicle(_ sender: UIButton) {
         switch Int.random(in: 1...4){
             case 1:
                     print("Изменим состояние Окон")
-                    (vehicle as! CommonVehicle).perform(action: .invertWindowsState)
+                    vehicle.windowsAreOpened = vehicle.performBool(action: .invertWindowsState)
             case 2:
                     print("Изменим состояние Двигателя")
-                    (vehicle as! CommonVehicle).perform(action: .invertEngine)
+                    vehicle.isItWounded = vehicle.performBool(action: .invertEngine)
             case 3:
                     print("погрузим или выгрузим чтонибудь")
-                    (vehicle as! CommonVehicle).perform(action: .loadingStorage(Int.random(in: -1000...1000)))
+                    vehicle.storageOccupation = vehicle.performLoadUnload(action: .loadingStorage(Int.random(in: -100...100)))
             case 4:
                 print("выполним специфическое для класса действие")
                     if vehicle is Lorry {
-                        (vehicle as! Lorry).perform(action: .addRemoveTrailer)
+                        (vehicle as! Lorry).isTrailerExist  = vehicle.performSpecific(action: .addRemoveTrailer)
                     } else {
-                        (vehicle as! PassengerCar).perform(action: .putRemoveChildCair)
+                        (vehicle as! PassengerCar).isChildChareExist = vehicle.performSpecific(action: .putRemoveChildCair)
                     }
             default:
                 break
         }
         if vehicle is Lorry {
-            print((vehicle as! Lorry).vehicleDescription())
+            print(vehicle as! Lorry)
         } else {
-            print((vehicle as! PassengerCar).vehicleDescription())
+            print(vehicle as! PassengerCar)
         }
     }
 }
