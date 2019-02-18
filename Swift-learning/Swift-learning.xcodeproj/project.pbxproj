@@ -12,6 +12,8 @@
 		846B6EDD220B610F0074C2D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846B6EDB220B610F0074C2D8 /* Main.storyboard */; };
 		846B6EDF220B61110074C2D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846B6EDE220B61110074C2D8 /* Assets.xcassets */; };
 		846B6EE2220B61110074C2D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846B6EE0220B61110074C2D8 /* LaunchScreen.storyboard */; };
+		8478FA5022196F5500794EB8 /* CustomQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478FA4F22196F5500794EB8 /* CustomQueue.swift */; };
+		8478FA522219876000794EB8 /* Cars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478FA512219876000794EB8 /* Cars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		846B6EDE220B61110074C2D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		846B6EE1220B61110074C2D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		846B6EE3220B61110074C2D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8478FA4F22196F5500794EB8 /* CustomQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomQueue.swift; sourceTree = "<group>"; };
+		8478FA512219876000794EB8 /* Cars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,24 @@
 		846B6ED6220B610F0074C2D8 /* Swift-learning */ = {
 			isa = PBXGroup;
 			children = (
-				846B6ED7220B610F0074C2D8 /* AppDelegate.swift */,
 				846B6ED9220B610F0074C2D8 /* ViewController.swift */,
+				8478FA512219876000794EB8 /* Cars.swift */,
+				8478FA4F22196F5500794EB8 /* CustomQueue.swift */,
 				846B6EDB220B610F0074C2D8 /* Main.storyboard */,
-				846B6EDE220B61110074C2D8 /* Assets.xcassets */,
-				846B6EE0220B61110074C2D8 /* LaunchScreen.storyboard */,
 				846B6EE3220B61110074C2D8 /* Info.plist */,
+				8478FA532219878100794EB8 /* Supporting Files */,
 			);
 			path = "Swift-learning";
+			sourceTree = "<group>";
+		};
+		8478FA532219878100794EB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				846B6EDE220B61110074C2D8 /* Assets.xcassets */,
+				846B6ED7220B610F0074C2D8 /* AppDelegate.swift */,
+				846B6EE0220B61110074C2D8 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8478FA5022196F5500794EB8 /* CustomQueue.swift in Sources */,
 				846B6EDA220B610F0074C2D8 /* ViewController.swift in Sources */,
+				8478FA522219876000794EB8 /* Cars.swift in Sources */,
 				846B6ED8220B610F0074C2D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
