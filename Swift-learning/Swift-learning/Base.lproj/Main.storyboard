@@ -29,13 +29,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guS-8X-dKP">
-                                <rect key="frame" x="49" y="378" width="277" height="33"/>
+                                <rect key="frame" x="16" y="378" width="343" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Проверка домашнего задания №6">
                                     <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="checkingHW6:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cI5-Ap-5aV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knF-vw-yKX">
+                                <rect key="frame" x="16" y="614" width="343" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Проверка домашнего задания №7">
+                                    <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkingHW7:" destination="BYZ-38-t0r" eventType="touchUpInside" id="00c-Qp-cYG"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HW #5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QBl-Xg-iTx">
@@ -60,20 +72,32 @@
                                     <action selector="initACar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bd9-Ss-bMI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HW #7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsb-et-LxM">
+                                <rect key="frame" x="149.5" y="557" width="76.5" height="29"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="ifF-BV-eDD" firstAttribute="centerX" secondItem="GC6-cG-yt7" secondAttribute="centerX" id="1B0-5I-DFO"/>
                             <constraint firstItem="GC6-cG-yt7" firstAttribute="top" secondItem="ifF-BV-eDD" secondAttribute="bottom" constant="8" symbolic="YES" id="1cd-gq-lm5"/>
                             <constraint firstItem="N1F-yh-FrW" firstAttribute="leading" secondItem="QBl-Xg-iTx" secondAttribute="leading" id="4HS-lk-UBq"/>
                             <constraint firstItem="ifF-BV-eDD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="4ht-C6-yTN"/>
+                            <constraint firstAttribute="bottom" secondItem="knF-vw-yKX" secondAttribute="bottom" constant="20" symbolic="YES" id="9ls-bH-v9e"/>
                             <constraint firstItem="QBl-Xg-iTx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Awb-Px-xOp"/>
                             <constraint firstItem="ifF-BV-eDD" firstAttribute="centerX" secondItem="N1F-yh-FrW" secondAttribute="centerX" id="J9H-5I-UXt"/>
                             <constraint firstItem="guS-8X-dKP" firstAttribute="top" secondItem="N1F-yh-FrW" secondAttribute="bottom" constant="30" id="YbH-fq-p4h"/>
                             <constraint firstItem="ifF-BV-eDD" firstAttribute="top" secondItem="QBl-Xg-iTx" secondAttribute="bottom" constant="20" id="Zrd-CH-H4P"/>
+                            <constraint firstItem="knF-vw-yKX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Zvi-Vt-EZF"/>
                             <constraint firstItem="N1F-yh-FrW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aui-61-j3K"/>
+                            <constraint firstItem="knF-vw-yKX" firstAttribute="trailing" secondItem="guS-8X-dKP" secondAttribute="trailing" id="dxw-F5-ZY0"/>
                             <constraint firstItem="ifF-BV-eDD" firstAttribute="centerX" secondItem="QBl-Xg-iTx" secondAttribute="centerX" id="eGF-fQ-MYt"/>
                             <constraint firstItem="ifF-BV-eDD" firstAttribute="centerX" secondItem="guS-8X-dKP" secondAttribute="centerX" id="gOW-RO-69W"/>
+                            <constraint firstItem="knF-vw-yKX" firstAttribute="centerX" secondItem="hsb-et-LxM" secondAttribute="centerX" id="lfb-Ew-qMf"/>
+                            <constraint firstItem="knF-vw-yKX" firstAttribute="top" secondItem="hsb-et-LxM" secondAttribute="bottom" constant="28" id="pSA-mJ-LUu"/>
+                            <constraint firstItem="knF-vw-yKX" firstAttribute="centerX" secondItem="guS-8X-dKP" secondAttribute="centerX" id="qkk-UN-HIc"/>
                             <constraint firstItem="QBl-Xg-iTx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vRC-4R-EDE"/>
                             <constraint firstItem="QBl-Xg-iTx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="143" id="wup-7V-NkA"/>
                         </constraints>

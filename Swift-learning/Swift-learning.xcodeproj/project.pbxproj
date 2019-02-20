@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8460D1A5221DD14C0055FCE9 /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460D1A4221DD14C0055FCE9 /* Robot.swift */; };
+		8460D1A7221DD4480055FCE9 /* Bendable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460D1A6221DD4480055FCE9 /* Bendable.swift */; };
+		8460D1A9221DDEF80055FCE9 /* Human.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460D1A8221DDEF80055FCE9 /* Human.swift */; };
 		846B6ED8220B610F0074C2D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B6ED7220B610F0074C2D8 /* AppDelegate.swift */; };
 		846B6EDA220B610F0074C2D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B6ED9220B610F0074C2D8 /* ViewController.swift */; };
 		846B6EDD220B610F0074C2D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846B6EDB220B610F0074C2D8 /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8460D1A4221DD14C0055FCE9 /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
+		8460D1A6221DD4480055FCE9 /* Bendable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bendable.swift; sourceTree = "<group>"; };
+		8460D1A8221DDEF80055FCE9 /* Human.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Human.swift; sourceTree = "<group>"; };
 		846B6ED4220B610F0074C2D8 /* Swift-learning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-learning.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846B6ED7220B610F0074C2D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846B6ED9220B610F0074C2D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +68,9 @@
 				8478FA512219876000794EB8 /* Cars.swift */,
 				8478FA4F22196F5500794EB8 /* CustomQueue.swift */,
 				846B6EDB220B610F0074C2D8 /* Main.storyboard */,
+				8460D1A4221DD14C0055FCE9 /* Robot.swift */,
+				8460D1A8221DDEF80055FCE9 /* Human.swift */,
+				8460D1A6221DD4480055FCE9 /* Bendable.swift */,
 				846B6EE3220B61110074C2D8 /* Info.plist */,
 				8478FA532219878100794EB8 /* Supporting Files */,
 			);
@@ -149,6 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8460D1A7221DD4480055FCE9 /* Bendable.swift in Sources */,
+				8460D1A9221DDEF80055FCE9 /* Human.swift in Sources */,
+				8460D1A5221DD14C0055FCE9 /* Robot.swift in Sources */,
 				8478FA5022196F5500794EB8 /* CustomQueue.swift in Sources */,
 				846B6EDA220B610F0074C2D8 /* ViewController.swift in Sources */,
 				8478FA522219876000794EB8 /* Cars.swift in Sources */,

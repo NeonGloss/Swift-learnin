@@ -8,6 +8,34 @@
 
 import UIKit
 class ViewController: UIViewController {
+//For HW#7
+    @IBAction func checkingHW7(_ sender: UIButton) {
+        let robotBender = Robot()
+        robotBender.energy = Level.full
+        let angle = Int.random(in: -360...360)
+        var experementalThing: Bendable
+        
+        experementalThing =  Int.random(in: 1...2) == 1 ? PassengerCar() : Human()
+        do {
+            print("будем сгибать: \(experementalThing)")
+            experementalThing = try robotBender.bendNext(it: experementalThing, by: angle)
+            print("После сгибания: \(experementalThing)")
+        }catch RobotErrors.lowBattery {
+            print("Не смогу согнуть! Энергия кончилась!! Заряжаю до упора!")
+            robotBender.energy = Level.full
+        }catch RobotErrors.notAThingToBend {
+            print("Это нельзя сгибать!")
+        }catch let otherError {
+            print(otherError.localizedDescription)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
 //For HW#6
     @IBAction func checkingHW6(_ sender: UIButton) {
@@ -31,7 +59,6 @@ class ViewController: UIViewController {
         print("Прибавили ко всем элементам еденицу: \n\(queue)")
         print("Выведем элемент в очереди под номером индексом 3:\n\(queue[3]!)")
         print("Выведем элемент в очереди под номером индексом 15(По заданию дожно выдать NIL):\n\(String(describing: queue[15]))")
-        
     }
     
 //For HW#5

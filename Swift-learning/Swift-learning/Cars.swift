@@ -14,6 +14,23 @@ enum Level: Int{
     case low
     case zero
 }
+extension Level {
+    var lowerLevel: Level{
+        get {
+        switch self{
+        case .full:
+            return Level.middle
+        case .middle:
+            return Level.low
+        case .low:
+            return Level.zero
+        case .zero:
+            return Level.zero
+            }
+        }
+    }
+}
+
 enum ActionOverACar {
     case invertEngine
     case invertWindowsState
@@ -71,9 +88,18 @@ extension Car {
 // 3. Создать два класса, имплементирующих протокол «Car» - trunkCar и sportСar. Описать в них свойства, отличающиеся для автомобиля и грузовика.
 // 4. Для каждого класса написать расширение, имплементирующее протокол CustomStringConvertible.
 
-class PassengerCar: Car{
+class PassengerCar: Car, Bendable{
+    let isItBendable = true
+    var currentAngle = 0
+    
+    var bendedCritically: Bool {
+            get {
+                return (-360...360).contains(currentAngle) ? true : false                
+            }
+        }
+    
     var description: String {
-        return String("-------------------\n" + "brand: \(self.brand)\n" + "assembleYear: \(self.assembleYear)\n" + "storageCapacity: \(self.storageCapacity)\n" + "storageOccupation: \(self.storageOccupation)\n" + "isItWounded: \(self.isItWounded)\n" + "windowsAreOpened: \(self.windowsAreOpened)\n" + "isChildChareExist: \(self.isChildChareExist)\n")
+        return String("-------------------\n" + "brand: \(self.brand)\n" + "assembleYear: \(self.assembleYear)\n" + "storageCapacity: \(self.storageCapacity)\n" + "storageOccupation: \(self.storageOccupation)\n" + "isItWounded: \(self.isItWounded)\n" + "windowsAreOpened: \(self.windowsAreOpened)\n" + "isChildChareExist: \(self.isChildChareExist)\n" + "isItBendable: \(self.isItBendable)\n" + "currentAngle: \(self.currentAngle)\n")
     }
     
     func performSpecific(action: ActionOverACar) -> Bool{
@@ -107,7 +133,10 @@ class PassengerCar: Car{
         self.storageOccupation = storageOccupation
         self.windowsAreOpened = windowsAreOpened
         self.isChildChareExist = isChildChareExist
-        
+    }
+    
+    convenience init() {
+        self.init(brand: "Volvo", assembleYear: 2010, storageCapacity: 100, storageOccupation: 50, isItWounded: false, windowsAreOpened: false, isChildChareExist: true)
     }
 }
 
